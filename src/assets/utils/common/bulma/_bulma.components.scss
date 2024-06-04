@@ -1,0 +1,78 @@
+// Inputs styles
+@import 'variables';
+
+.field {
+  text-align: left;
+  margin-bottom: 16px !important;
+
+  .label {
+    @include labelMediumText;
+    color: var(--color-dark-secondary);
+  }
+
+  &-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 4;
+  }
+
+  .control {
+    height: 50px;
+
+    .btn-icon {
+      position: absolute;
+      right: 0px;
+      z-index: 4;
+    }
+
+    .mat-datepicker-toggle {
+      position: absolute;
+      right: 0px;
+      top: 4px;
+      color: var(--color-dark-primary) !important;
+    }
+
+    &--textarea {
+      height: auto
+    }
+  }
+
+  .help {
+    @include captionText;
+    color: var(--color-error-90);
+  }
+}
+
+.textarea {
+  padding: 7px 16px !important;
+  background-color: var(--color-neutral-40) !important;
+  color: var(--color-light-read-only) !important;
+  border: 1px solid var(--color-outline) !important;
+}
+
+.textarea::placeholder {
+  color: var(--color-light-read-only) !important;
+  opacity: 0.5;
+  /* Firefox */
+}
+
+.input {
+  height: 100% !important;
+  padding: 7px 16px !important;
+  @include bodyMediumText;
+  background-color: var(--color-neutral-40) !important;
+  color: var(--color-light-read-only) !important;
+  border: 1px solid var(--color-outline) !important;
+}
+
+.input::placeholder {
+  color: var(--color-light-read-only) !important;
+  opacity: 0.5;
+  /* Firefox */
+}
+
+.input:focus {
+  box-shadow: none !important;
+  border-color: var(--color-dark-primary) !important;
+}

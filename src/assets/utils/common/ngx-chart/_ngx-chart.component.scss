@@ -1,0 +1,15 @@
+.ngx-charts-outer {
+  height: 100%;
+  color: var( --color-light-read-only);
+  fill: var( --color-light-read-only);
+
+  .chart-legend {
+    .legend-label {
+      .active {
+        .legend-label-text {
+          color: var(--color-dark-primary) !important;
+        }
+      }
+    }
+  }
+}
