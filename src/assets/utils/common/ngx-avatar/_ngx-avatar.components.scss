@@ -1,0 +1,8 @@
+.logo {
+  ngx-avatar {
+    .avatar-content {
+      background-color: var(--color-light-read-only);
+      object-fit: contain;
+    }
+  }
+}

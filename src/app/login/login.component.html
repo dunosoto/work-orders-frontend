@@ -1,0 +1,45 @@
+<p>login works!</p>
+
+<section class="login">
+  <figure class="login-img">
+    <img class="login-img__content" src="assets/images/bg-login-image.jpg" alt="fondo de sesión">
+    <div class="login-img__on-bg"></div>
+  </figure>
+  <section class="columns">
+    <article class="login-form column
+                    is-12-mobile is-8-tablet is-4-desktop
+                    is-offset-2-tablet is-offset-4-desktop">
+      <form class="login-form__container" [formGroup]="loginForm" (ngSubmit)="login()">
+        <img class="login-form__container-logo" src="assets/img/logo.png" alt="imagen del logo">
+        <mat-label class="title-text">¡Bienvenido!</mat-label>
+        <section class="login-form__container-inputs">
+          <mat-label class="subtitle-text">Inicia Sesión para continuar</mat-label>
+          <div class="field">
+            <mat-label class="label">Correo Electronico:</mat-label>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input" type="email" placeholder="example@example.com" formControlName="email">
+            </div>
+            <mat-label class="help">El correo electronico es requerido</mat-label>
+          </div>
+          <div class="field">
+            <mat-label class="label">Contraseña:</mat-label>
+            <div class="control has-icons-left has-icons-right">
+              <input class="input" [type]="showPassword ? 'text':'password' "  type="password" placeholder="**********" formControlName="password">
+              <button class="btn-icon is-right" type="button" mat-icon-button color="primary">
+                <mat-icon aria-hidden="false" aria-label="" (click)="togglePassword()">{{passwordToggleIcon}}</mat-icon>
+              </button>
+            </div>
+            <mat-label class="help">La contraseña es requerida</mat-label>
+          </div>
+          <p class="check-text"><mat-checkbox color="primary">Recuérdame</mat-checkbox></p>
+
+          <button [disabled]="!loginForm.valid" type="submit" mat-raised-button color="primary">
+            <mat-icon class="has-text-white btn-icon" aria-hidden="false" aria-label="icon-login">login</mat-icon>
+            <mat-label class="btn-text">Ingresar</mat-label>
+          </button>
+        </section>
+      </form>
+    </article>
+  </section>
+
+</section>

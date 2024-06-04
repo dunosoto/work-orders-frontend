@@ -1,0 +1,16 @@
+export enum UserRole {
+  ADMINISTRATOR = 'AD',
+  TECHNICAL_USER = 'TC',
+  TECHNICAL_SUPERVISOR = 'TRC',
+  AUX_MDF = 'AUX',
+  SUPERVISOR = 'SU',
+}
+
+export enum UserRoleId {
+  ADMINISTRATOR = 1,
+  SUPERVISOR = 2,
+  TECHNICAL_USER = 3,
+  TECHNICAL_SUPERVISOR = 4,
+  AUX_MDF = 5,
+  WAREHOUSE = 6,
+}

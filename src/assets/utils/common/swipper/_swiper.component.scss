@@ -1,0 +1,12 @@
+.swiper-button-prev, .swiper-button-next {
+  color: var(--color-light-read-only);
+}
+.swiper-button-prev::after, .swiper-button-next::after {
+  font-size: 24px !important;
+}
+.swiper-pagination-bullet-active {
+  background: var(--color-primary);
+}
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 0px;
+}

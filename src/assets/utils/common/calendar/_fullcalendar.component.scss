@@ -1,0 +1,26 @@
+.fc-toolbar {
+  text-transform: capitalize;
+  color: var(--color-background);
+  padding: 20px 0;
+}
+.fc{
+  color: var(--color-background);
+  text-transform: capitalize;
+  padding: 25px;
+}
+
+.fc-col-header-cell-cushion{
+  color: var(--color-background);
+}
+
+.fc-col-header-cell-cushion:hover{
+  color: yellow;
+}
+
+.fc-daygrid-day-number{
+  color: var(--color-background);
+}
+
+.fc-scrollgrid {
+  border-top: none !important;
+}

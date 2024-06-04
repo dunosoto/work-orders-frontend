@@ -1,0 +1,106 @@
+@import 'variables';
+div.swalConfirm {
+  background-color: var(--color-neutral-40);
+  color: var(--color-light-read-only);
+  width: 637px;
+  height: 497px;
+
+  button.swal2-confirm {
+    background-color: var(--color-primary60);
+  }
+
+  button.swal2-cancel {
+    background-color: transparent;
+    color: var(--color-dark-primary);
+    border: 1px solid var(--color-dark-primary);
+  }
+
+  div.swal2-icon {
+    color: var(--color-light-tertiary);
+    border: 5px solid var(--color-light-tertiary);
+    font-size: 18px;
+    @include media-breakpoint-up(md){
+      font-size: 25px;
+    }
+
+    &-content {
+      color: var(--color-light-tertiary);
+      // border: 8px solid var(--color-light-tertiary);
+    }
+  }
+  h2.swal2-title{
+    @include displayExtraSmallText;
+    @include media-breakpoint-up(md) {
+      @include displaySmallText;
+    }
+    // margin: 0;
+    // padding: 0;
+  }
+}
+
+div.swalSuccess{
+  background-color: var(--color-neutral-40);
+  color: var(--color-light-read-only);
+  width: 637px;
+  height: 497px;
+
+  div.swal2-icon {
+    color: var(--color-light-tertiary);
+    font-size: 18px;
+    @include media-breakpoint-up(md){
+      font-size: 30px;
+    }
+
+    &-content {
+      color: var(--color-light-tertiary);
+    }
+  }
+  h2.swal2-title{
+    @include displayExtraSmallText;
+    margin: 0 auto;
+    padding: 0 auto;
+
+    @include media-breakpoint-up(md) {
+      @include displaySmallText;
+    }
+
+  }
+  div.swal2-html-container{
+    @include bodySmallText;
+    @include media-breakpoint-up(md) {
+      @include bodyLargeText;
+    }
+  }
+
+}
+
+div.swalLoading{
+  background-color: var(--color-neutral-40);
+  color: var(--color-light-read-only);
+  width: 627px;
+  height: 283px;
+  h2.swal2-title{
+    @include displaySmallText;
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  div.swal2-html-container{
+    @include bodySmallText;
+
+    @include media-breakpoint-up(md) {
+      @include bodyLargeText;
+    }
+  }
+  div.swal2-loader{
+    font-size: 45px;
+  }
+}
+
+// div.swalError{
+
+// }
+
+
+.swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {
+  background: rgba(0,0,0,.6) !important;
+}

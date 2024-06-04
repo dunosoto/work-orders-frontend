@@ -1,4 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables.scss';
+@import './assets/utils/utils.style';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+* {
+  box-sizing: border-box !important;
+}
+
+
+@include media-breakpoint-up(lg) {
+  *::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 8px;    /* Tamaño del scroll en horizontal */
+    // display: none;  /* Ocultar scroll */
+  }
+  *::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+  }
+  *::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+  }
+
+  *::-webkit-scrollbar-track:hover,
+  *::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
+  }
+
+}

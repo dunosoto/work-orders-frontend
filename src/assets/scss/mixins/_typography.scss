@@ -1,0 +1,179 @@
+@import './mixins-breackpoints';
+$font-family: 'Roboto';
+$second-font-family: 'Roboto';
+
+//Body
+@mixin bodyLargeText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+@mixin bodyMediumText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+}
+@mixin bodySmallText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+}
+
+//Label
+@mixin labelLargeText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}
+@mixin labelMediumText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+}
+@mixin labelSmallText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+}
+
+
+//Title
+@mixin titleLargeText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 28px;
+}
+@mixin titleMediumText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.1px;
+}
+@mixin titleSmallText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}
+
+//HeadlineLarge
+@mixin headlineLargeText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 40px;
+}
+@mixin headlineMediumText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+}
+@mixin headlineSmallText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+//display
+@mixin displayLargeText {
+  font-family: $second-font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 57px;
+  line-height: 64px;
+  letter-spacing: -0.25px;
+}
+@mixin displayMediumText {
+  font-family: $second-font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 52px;
+}
+@mixin displaySmallText {
+  font-family: $second-font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 44px;
+}
+@mixin displayExtraSmallText {
+  font-family: $second-font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+
+//extras
+@mixin overlineText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+}
+@mixin captionText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.4px;
+}
+@mixin buttonText {
+  // font-family: $font-family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+}
+
+
+.text{
+  &--label {
+    @include labelSmallText();
+    @include  media-breakpoint-up(md) {
+      @include labelMediumText();
+    }
+    @include  media-breakpoint-up(lg) {
+      @include labelLargeText();
+    }
+  }
+
+  &--button {
+    @include captionText();
+  }
+}
