@@ -1,0 +1,13 @@
+<mat-nav-list class="list-container is-bg--neutral20">
+  <section matSubheader>
+    <mat-label class="is-text is-text--caption is-color--white">Area de trabajo</mat-label>
+  </section>
+
+  <a class="list-container__a" mat-list-item
+    *ngFor="let link of links | async"
+    [routerLink]="link.url"
+    routerLinkActive="active-route">
+    <mat-icon class="material-icons-outlined is-color--white has-opacity--5 mr-2" aria-hidden="false" aria-label="router icon">{{link.icon}}</mat-icon>
+    <mat-label class="is-text is-text--button is-color--white">{{link.label}}</mat-label>
+  </a>
+</mat-nav-list>

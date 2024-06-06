@@ -1,0 +1,108 @@
+<mat-toolbar class="dialog-toolbar mat-elevation-z6">
+  <span class="title-text">Agregar nuevo usuario</span>
+  <span class="spacer"></span>
+  <button mat-icon-button color="primary" (click)="closeModal(false)">
+    <mat-icon aria-label="label">close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-label class="text-label">Los campos con * son obligatorios:</mat-label>
+<form class="form-container" [formGroup]="formData" (ngSubmit)="addUser()">
+  <section class="form-container__content is-flex is-flex-direction-column is-bg--neutral20">
+    <section class="field">
+      <mat-label class="label">Nombre(s) *:</mat-label>
+      <section class="control has-icons-left has-icons-right">
+        <input class="input" type="text" required="true" placeholder="Juan" formControlName="name"
+          [value]="formData.controls.name.value | titlecase">
+      </section>
+      <section *ngFor="let errorMessage of errorsMessages.name">
+        <ng-container *ngIf="name?.hasError(errorMessage.type) && (name?.dirty || name?.touched)">
+          <mat-label class="help">
+            {{errorMessage.message}}
+          </mat-label>
+        </ng-container>
+      </section>
+
+    </section>
+    <section class="field">
+      <mat-label class="label">Apellido(s) *:</mat-label>
+      <section class="control has-icons-left has-icons-right">
+        <input class="input" type="text" required="true" placeholder="Perez" formControlName="last_name"
+          [value]="formData.controls.last_name.value | titlecase">
+      </section>
+      <section *ngFor="let errorMessage of errorsMessages.lastName">
+        <ng-container *ngIf="lastName?.hasError(errorMessage.type) && (lastName?.dirty || lastName?.touched)">
+          <mat-label class="help">
+            {{errorMessage.message}}
+          </mat-label>
+        </ng-container>
+      </section>
+    </section>
+    <section class="field">
+      <mat-label class="label">Nro Celular *:</mat-label>
+      <section class="control has-icons-left has-icons-right">
+        <input class="input" type="tel" required="true" placeholder="78451236" formControlName="cell_phone">
+      </section>
+      <section *ngFor="let errorMessage of errorsMessages.cellPhone">
+        <ng-container *ngIf="cellPhone?.hasError(errorMessage.type) && (cellPhone?.dirty || cellPhone?.touched)">
+          <mat-label class="help">
+            {{errorMessage.message}}
+          </mat-label>
+        </ng-container>
+      </section>
+    </section>
+    <section class="field">
+      <mat-label class="label">Correo electronico *:</mat-label>
+      <section class="control has-icons-left has-icons-right">
+        <input class="input" type="email" required="true" placeholder="example@example.com" formControlName="email">
+      </section>
+      <section *ngFor="let errorMessage of errorsMessages.email">
+        <ng-container *ngIf="email?.hasError(errorMessage.type) && (email?.dirty || email?.touched)">
+          <mat-label class="help">
+            {{errorMessage.message}}
+          </mat-label>
+        </ng-container>
+      </section>
+    </section>
+    <section class="field">
+      <mat-label class="label">Contraseña *:</mat-label>
+      <section class="control has-icons-left has-icons-right">
+        <input class="input" type="password" required="true" placeholder="*****" formControlName="password">
+      </section>
+      <section *ngFor="let errorMessage of errorsMessages.password">
+        <ng-container *ngIf="password?.hasError(errorMessage.type) && (password?.dirty || password?.touched)">
+          <mat-label class="help">
+            {{errorMessage.message}}
+          </mat-label>
+        </ng-container>
+      </section>
+    </section>
+    <section class="field">
+      <mat-label class="label">Confirmar contraseña *:</mat-label>
+      <section class="control has-icons-left has-icons-right">
+        <input class="input" type="password" required="true" placeholder="Ingrese la misma contraseña"
+          formControlName="password_confirmation">
+      </section>
+      <section *ngFor="let errorMessage of errorsMessages.passwordConfirm">
+        <ng-container
+          *ngIf="passwordConfirm?.hasError(errorMessage.type) && (passwordConfirm?.dirty || passwordConfirm?.touched)">
+          <mat-label class="help">
+            {{errorMessage.message}}
+          </mat-label>
+        </ng-container>
+      </section>
+    </section>
+
+    <section class="field">
+      <mat-label class="label">Rol *:</mat-label>
+      <mat-select placeholder="Rol al que pertenece" required="true" formControlName="role_name">
+        <mat-option class="is-bg--neutral30" *ngFor="let role of dataGlobalStore.roles$ | async" [value]="role.name"
+          (click)="formData.controls.role_id.setValue(role.id)">
+          <mat-label class="is-text is-text--button is-color--white">{{role.name}}</mat-label>
+        </mat-option>
+      </mat-select>
+    </section>
+    <button [disabled]="!formData.valid" mat-raised-button type="submit" color="primary">
+      <mat-label class="btn-text">Agregar</mat-label>
+    </button>
+  </section>
+</form>

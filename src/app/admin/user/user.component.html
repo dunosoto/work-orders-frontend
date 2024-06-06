@@ -1,0 +1,20 @@
+<app-route-section [routes]="['Workspace', 'Usuarios']"></app-route-section>
+<app-title-section [title]="'Lista de Usuarios'"></app-title-section>
+<section class="data">
+  <section class="data-container">
+    <mat-progress-bar *ngIf="loading$ | async" mode="query"></mat-progress-bar>
+    <!-- <app-filters [buttonName]="'Nuevo Usuario'" [filtersObject]="filtersObject" (buttonEventEmitter)="addUser()"
+      (searchEventEmitter)="getTextToSearch($event)">
+    </app-filters> -->
+
+    <section *ngIf="(usersDataSource$ | async | filterUserByUserName:textToSearch).length > 0">
+      <app-user-data [usersDataSource]="usersDataSource$ | async | filterUserByUserName:textToSearch"
+        (reloadEventEmitter)="getUsers()"></app-user-data>
+    </section>
+
+    <!-- <app-empty-state *ngIf="(usersDataSource$ | async | filterUserByUserName:textToSearch).length === 0">
+    </app-empty-state> -->
+
+  </section>
+
+</section>
