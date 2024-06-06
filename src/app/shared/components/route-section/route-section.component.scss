@@ -1,0 +1,10 @@
+@import 'variables';
+mat-toolbar {
+  background-color: var(--color-neutral-30);
+  color: var(--color-light-read-only);
+  .label-text {
+    @include captionText;
+    margin-right: 16px;
+  }
+  overflow-x: auto;
+}

@@ -1,0 +1,46 @@
+{
+  "linksAdmin": [
+    {
+      "url": "usuarios",
+      "label": "Usuarios",
+      "icon": "people"
+    },
+    {
+      "url": "grupos",
+      "label": "Grupos",
+      "icon": "groups"
+    },
+    {
+      "url": "roles",
+      "label": "Roles",
+      "icon": "workspaces"
+    },
+    {
+      "url": "etiquetas",
+      "label": "Etiquetas",
+      "icon": "label"
+    },
+    {
+      "url": "clientes",
+      "label": "Clientes",
+      "icon": "maps_home_work"
+    }
+  ],
+  "linksProvitionOrder": [
+    {
+      "url": "dashboard",
+      "label": "Dashboard",
+      "icon": "dashboard"
+    },
+    {
+      "url": "lista",
+      "label": "Lista OT's",
+      "icon": "groups"
+    },
+    {
+      "url": "grupos",
+      "label": "Grupos",
+      "icon": "label"
+    }
+  ]
+}

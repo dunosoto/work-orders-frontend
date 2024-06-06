@@ -1,7 +1,9 @@
+import { RoleState } from "./states/role/role.state";
 import { UserState } from "./states/user.state";
 
-export interface ConnectingState {
+export interface ConnectState {
   users: UserState,
+  roles: RoleState,
   // groups: GroupState
   // clients: ClientState
   // addresses: AddressState

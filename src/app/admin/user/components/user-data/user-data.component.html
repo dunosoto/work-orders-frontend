@@ -1,0 +1,120 @@
+<section *ngIf="usersDataSource" class="table-container">
+  <mat-table [dataSource]="usersDataSource">
+
+    <ng-container matColumnDef="user">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Usuarios</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <section class="user-content is-flex">
+          <!-- <ngx-avatar size="40" class="user-content__avatar" [name]="element.name"></ngx-avatar> -->
+          <section class="is-flex is-flex-direction-column">
+            <mat-label class="is-text is-text--body is-color--secondary">
+              {{(element.name | titlecase )+ ' ' + (element.last_name | titlecase)}}</mat-label>
+            <article class="is-text is-text--caption is-flex is-align-items-center is-color--white has-opacity--8">
+              <mat-icon aria-hidden="false" aria-label="email-icon"
+                class="is-flex is-align-items-center material-icons-outlined">email
+              </mat-icon>
+              <mat-label>
+                {{element.email}}
+              </mat-label>
+            </article>
+            <article class="is-text is-text--caption is-flex is-align-items-center is-color--white has-opacity--8">
+              <mat-icon aria-hidden="false" aria-label="phone_android-icon"
+                class="is-flex is-align-items-center material-icons-outlined">
+                phone_android</mat-icon>
+              <mat-label>
+                {{element.cell_phone}}
+              </mat-label>
+            </article>
+          </section>
+        </section>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="rol">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Roles</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-label class="is-text is-text--body is-color--white has-opacity--8">{{element.role.name}}</mat-label>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="area">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Area(s)</mat-label>
+      </mat-header-cell>
+      <mat-cell class="is-block" *matCellDef="let element">
+        <section class="mb-2" *ngFor="let area of element.area">
+          <mat-label class="is-text is-text--body is-color--white has-opacity--8">{{area.name}}</mat-label>
+        </section>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="group">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Grupo(s)</mat-label>
+      </mat-header-cell>
+      <mat-cell class="is-block" *matCellDef="let element">
+        <section class="mb-2" *ngFor="let area of element.groups">
+          <mat-label class="is-text is-text--body is-color--white has-opacity--8">{{area.prefix}}</mat-label>
+        </section>
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="company">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Empresa</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <section class="is-flex is-align-items-center logo">
+          <!-- <ngx-avatar *ngIf="element.company.name === 'Entel S.A.'" class="mr-4" size="30"
+            src="assets/img/entel-logo.jpg"></ngx-avatar>
+          <ngx-avatar *ngIf="element.company.name === 'CO4 S.R.L.'" class="mr-4" size="30" src="assets/img/logo.png">
+          </ngx-avatar> -->
+          <mat-label class="text-label is-color--light-read-only has-opacity--5">{{element.company.name}}</mat-label>
+        </section>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Estado</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-label class="text-label has-opacity--5" [ngStyle]="{'color': (element.status? '#8CA8FF': '#FF897A')}">
+          {{element.status == (1 || true)? 'Activo' : 'Inactivo'}}</mat-label>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action" stickyEnd *ngIf="true">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button expand="block" slot="end" fill="clear" color="primary" [matMenuTriggerFor]="action">
+          <mat-icon aria-label="label">more_horiz</mat-icon>
+          <mat-menu #action xPosition="before">
+            <button mat-menu-item (click)="updateUser(element)">
+              <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="edit-icon">mode_edit_outline
+              </mat-icon>
+              <mat-label color="primary">Editar</mat-label>
+            </button>
+            <button mat-menu-item (click)="deleteUser(element, swalSuccess)">
+              <mat-icon aria-hidden="false" aria-label="tash-icon">delete_outline</mat-icon>
+              <mat-label color="primary">Eliminar</mat-label>
+            </button>
+          </mat-menu>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+  </mat-table>
+</section>
+
+<swal #swalSuccess title="¡Eliminado correctamente!" text="Los datos del usuario se eliminaron correctamente."
+  icon="success" position="center" customClass="swalSuccess" [showCancelButton]="false" [showCancelButton]="false"
+  [showConfirmButton]="false" [timer]="1500">
+</swal>

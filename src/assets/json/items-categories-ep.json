@@ -1,0 +1,146 @@
+[
+  {
+    "name": "RED AEREA",
+    "value": "A-"
+  },
+  {
+    "name": "RED SUBTERRANEA",
+    "value": "S-"
+  },
+  {
+    "name": "MDF Y ARMARIOS",
+    "value": "M-"
+  },
+  {
+    "name": "INSTALACIONES EN EDIFICIO",
+    "value": "E-"
+  },
+  {
+    "name": "POSTACION Y SUS ACCEORIOS",
+    "value": "P-"
+  },
+  {
+    "name": "SISTEMAS DE TIERRA",
+    "value": "T-"
+  },
+  {
+    "name": "OTROS",
+    "value": "H-"
+  },
+  {
+    "name": "RED DOMICILIARIA",
+    "value": "D-"
+  },
+  {
+    "name": "RED DOMICILIARIA WIMAX",
+    "value": "WM-"
+  },
+  {
+    "name": "CAMARAS Y DUCTOS",
+    "value": "C-"
+  },
+  {
+    "name": "(OC) PRELIMINARES",
+    "value": "OC-1"
+  },
+  {
+    "name": "(OC) CORTE Y ROTURA DE CALZADA O VEREDA",
+    "value": "OC-2-"
+  },
+  {
+    "name": "(OC) RETIRO DE EMPEDRADO DE CALZADA O VEREDA",
+    "value": "OC-3"
+  },
+  {
+    "name": "(OC) EXCAVACION Y DEMOLICIONES",
+    "value": "OC-4"
+  },
+  {
+    "name": "(OC) RELLENO DE ZANJA",
+    "value": "OC-5"
+  },
+  {
+    "name": "(OC) REPOSICION DE REVESTIMIENTOS",
+    "value": "OC-6"
+  },
+  {
+    "name": "(OC) HORMIGON SIMPLE",
+    "value": "OC-7"
+  },
+  {
+    "name": "(OC) HORMIGON CICLOPEO",
+    "value": "OC-8"
+  },
+  {
+    "name": "(OC) ACERO PARA ARMADURA",
+    "value": "OC-9"
+  },
+  {
+    "name": "(OC) CONSTRUCCION DE CAMARAS",
+    "value": "OC-10"
+  },
+  {
+    "name": "(OC) RETIRO",
+    "value": "OC-11"
+  },
+  {
+    "name": "(OC) ADICIONALES",
+    "value": "OC-12"
+  },
+  {
+    "name": "(OC) MORTEROS",
+    "value": "OC-13"
+  },
+  {
+    "name": "(OC) PROTECCIONES",
+    "value": "OC-14"
+  },
+  {
+    "name": "(OC) SEÑALIZACION",
+    "value": "OC-15"
+  },
+  {
+    "name": "(OC) TENDIDO SUBTERRANEO",
+    "value": "OC-16"
+  },
+  {
+    "name": "(OC) CRUCE DE PUENTES",
+    "value": "OC-17"
+  },
+  {
+    "name": "(OC) CRUCE SOLERA DE ALCANTARILLAS Y RIOS",
+    "value": "OC-18"
+  },
+  {
+    "name": "(OC) PERSONAL EVENTUAL",
+    "value": "OC-19"
+  },
+  {
+    "name": "(OC) RED DE FIBRA OPTICA",
+    "value": "FO1"
+  },
+  {
+    "name": "(OC) EMPALME Y TERMINACION DE F.O.",
+    "value": "EF01"
+  },
+  {
+    "name": "(OC) MEDIDAS OPTICAS DE CERTIFICACION",
+    "value": "MF01"
+  },
+  {
+    "name": "(OC) PROYECTO",
+    "value": "PF01"
+  },
+  {
+    "name": "MANO DE OBRA INSTALACIONES DE SERVICIOS",
+    "value": "G."
+  },
+  {
+    "name": "MANO DE OBRA INSTALACIONE DE TERMINALES DE TELECOMUNICACIONES",
+    "value": "I."
+  },
+  {
+    "name": "MANO DE OBRA RETIRO DE TERMINALES DE TELECOMUNICACIONES",
+    "value": "R."
+  }
+]

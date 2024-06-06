@@ -1,0 +1,50 @@
+[
+  {
+    "name" : "No asignadas",
+    "prefix" : "NA",
+    "type" : "FILL",
+    "color" : "#BA1B1B"
+  },
+  {
+    "name" : "Pendientes",
+    "prefix" : "PE",
+    "type" : "FILL",
+    "color" : "#B03000"
+  },
+  {
+    "name" : "En proceso de Ejecución",
+    "prefix" : "EP",
+    "type" : "FILL",
+    "color" : "#3D5AA9"
+  },
+  {
+    "name" : "Ejecutada",
+    "prefix" : "EJ",
+    "type" : "FILL",
+    "color" : "#004FE7"
+  },
+  {
+    "name" : "Crítico",
+    "prefix" : "CR",
+    "type" : "OUTLINED",
+    "color" : "#FF897A"
+  },
+  {
+    "name" : "Alto",
+    "prefix" : "AL",
+    "type" : "OUTLINED",
+    "color" : "#FF897A"
+  },
+  {
+    "name" : "Medio",
+    "prefix" : "ME",
+    "type" : "OUTLINED",
+    "color" : "#8CA8FF"
+  },
+  {
+    "name" : "Bajo",
+    "prefix" : "BA",
+    "type" : "OUTLINED",
+    "color" : "#FFFFFF"
+  }
+]

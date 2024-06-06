@@ -1,0 +1,18 @@
+<mat-toolbar class="mat-elevation-z6">
+  <button type="button" *ngIf="showBackButton" mat-icon-button (click)="backButtonEmitter.emit(true)" color="primary">
+    <mat-icon aria-label="back button">arrow_back</mat-icon>
+  </button>
+  <div *ngFor="let route of routes; index as i">
+    <mat-label class="label-text"
+    [ngStyle]="
+    {'color': (i === routes.length - 1) ? '#B4C5FF' : '#FFFFFF',
+     'opacity': (i === routes.length - 1) ? '1' : '0.7'}">
+     {{route}}
+    </mat-label>
+    <mat-label class="label-text" *ngIf="!(i === routes.length - 1)">/</mat-label>
+  </div>
+  <span class="spacer"></span>
+  <button type="button" *ngIf="showCloseButton" mat-icon-button (click)="closeButtonEmitter.emit(true)" color="primary">
+    <mat-icon aria-label="close button">close</mat-icon>
+  </button>
+</mat-toolbar>

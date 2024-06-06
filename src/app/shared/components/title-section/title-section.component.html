@@ -1,0 +1,130 @@
+<mat-toolbar>
+
+  <span class="title-section">{{title}}</span>
+  <span class="spacer"></span>
+
+  <article class="filter mr-2 is-text is-text--caption is-color--white is-flex is-align-items-center"
+    *ngIf="showFilters.dateRange">
+    <mat-label class="text-label mr-2 is-color--secondary">Rango de fechas</mat-label>
+    <article class=" date-range is-bg--neutral40 has-border-radius--4 is-flex is-align-items-center pl-2">
+      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+        <input matStartDate placeholder="Fecha Ini." formControlName="start" />
+        <input matEndDate placeholder="Fecha Fin." formControlName="end" (dateChange)="getSelectedRangeDate()" />
+      </mat-date-range-input>
+
+      <mat-datepicker-toggle matIconSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon class="is-color--white">
+          keyboard_arrow_down
+        </mat-icon>
+      </mat-datepicker-toggle>
+      <mat-date-range-picker #picker disabled="false">
+      </mat-date-range-picker>
+
+    </article>
+  </article>
+
+  <article class="filter mr-2 is-text is-text--caption is-color--white is-flex is-align-items-center"
+    *ngIf="showFilters.year">
+    <mat-label class="text-label mr-2 is-color--secondary">Gestión:</mat-label>
+    <mat-select
+      class="locality-select contrl is-color--neutral40 is-color--white has-border-radius--4 pl-1 is-text--caption"
+      placeholder="Filtrar por gestion" required="true" *ngIf="years" [(value)]="selectedYear">
+      <mat-option *ngIf="showFilters.allYearSelected" selected class="is-bg--neutral30" [value]="null"
+        (click)="selectYearByUser.emit(null)">
+        <mat-label class="is-text is-text--caption is-color--primary">
+          {{ 'Todos' }}
+        </mat-label>
+      </mat-option>
+      <mat-option class="is-bg--neutral30" *ngFor="let year of years" [value]="year"
+        (click)="selectYearByUser.emit(year)">
+        <mat-label class="is-text is-text--caption is-color--white">
+          {{ year }}
+        </mat-label>
+      </mat-option>
+    </mat-select>
+  </article>
+
+
+  <article class="filter mr-2" *ngIf="showFilters.categoryItemPrice && categoriesItems">
+    <mat-label class="text-label mr-2">Categoría: </mat-label>
+    <mat-select
+      class="locality-select contrl is-color--neutral40 is-color--white has-border-radius--4 pl-1 is-text--caption"
+      placeholder="Filtrar por categorías" required="true">
+      <mat-option class="is-bg--neutral30" [value]="null" (click)="selectCategoryItemByUser.emit('')">
+        <mat-label class="is-text is-text--caption is-color--primary">
+          {{ 'Todos' }}
+        </mat-label>
+      </mat-option>
+      <mat-option class="is-bg--neutral30" *ngFor="let categoryItem of categoriesItems" [value]="categoryItem"
+        (click)="selectCategoryItemByUser.emit(categoryItem)">
+        <mat-label class="is-text is-text--caption is-color--white">
+          {{ categoryItem.name }}
+        </mat-label>
+      </mat-option>
+    </mat-select>
+  </article>
+
+
+  <article class="filter mr-2" *ngIf="showFilters.month">
+    <mat-label class="text-label mr-2">Mes: </mat-label>
+    <mat-select
+      class="locality-select contrl is-color--neutral40 is-color--white has-border-radius--4 pl-1 is-text--caption"
+      placeholder="Filtrar por mes" required="true">
+      <mat-option class="is-bg--neutral30" [value]="null" (click)="selectMonthByUser.emit(null)">
+        <mat-label class="is-text is-text--caption is-color--primary">
+          {{ 'Todos' }}
+        </mat-label>
+      </mat-option>
+      <mat-option class="is-bg--neutral30" *ngFor="let month of months" [value]="month"
+        (click)="selectMonthByUser.emit(month.value)">
+        <mat-label class="is-text is-text--caption is-color--white">
+          {{ month.name }}
+        </mat-label>
+      </mat-option>
+    </mat-select>
+  </article>
+
+  <section class="filter mx-2" *ngIf="showFilters.location">
+    <mat-label class="text-label mr-2">Ubicación: </mat-label>
+    <mat-select
+      class="locality-select contrl is-color--neutral40 is-color--white has-border-radius--4 pl-1 is-text--caption"
+      placeholder="Filtrar por ubicación" required="true">
+    </mat-select>
+  </section>
+
+
+  <section class="filter" *ngIf="showFilters.groups && groups">
+    <mat-label class="text-label mr-2">Grupo: </mat-label>
+    <mat-select
+      class="locality-select contrl is-color--neutral40 is-color--white has-border-radius--4 pl-1 is-text--caption"
+      placeholder="Filtrar por grupo" required="true" *ngIf="selectedGroup" [(value)]="selectedGroup">
+
+      <mat-option class="is-bg--neutral30" *ngFor="let group of groups" [value]="group"
+        (click)="selectGroupByUser.emit(group)">
+        <mat-label class="is-text is-text--caption is-color--white">
+          {{ group.prefix }}
+        </mat-label>
+      </mat-option>
+    </mat-select>
+  </section>
+
+  <section class="filter" *ngIf="showFilters.areas">
+    <mat-label class="text-label mr-2">Area: </mat-label>
+    <mat-select
+      class="locality-select contrl is-color--neutral40 is-color--white has-border-radius--4 pl-1 is-text--caption"
+      placeholder="Filtrar por ubicación" required="true" [(value)]="selectedArea">
+
+      <mat-option class="is-bg--neutral30" *ngFor="let area of areas" [value]="area"
+        (click)="selectAreaByUser.emit(area)">
+        <mat-label class="is-text is-text--caption is-color--white">
+          {{ area.name }}
+        </mat-label>
+      </mat-option>
+    </mat-select>
+  </section>
+
+  <section class="filter " *ngIf="showFilters.failureTypes">
+    <mat-label class="text-label mr-2">Filtros: </mat-label>
+  </section>
+
+</mat-toolbar>

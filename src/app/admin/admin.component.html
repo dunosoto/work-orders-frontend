@@ -1,0 +1,13 @@
+<mat-sidenav-container class="sidenav-container is-bg--dark">
+  <mat-sidenav #sidenavAdmin class="sidenav is-bg--neutral20"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content is-bg--dark">
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
