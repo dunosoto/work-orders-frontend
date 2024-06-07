@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RoutesByArea, RoutesByRole } from '../../models/routes-by-role.model';
 import { Router } from '@angular/router';
-import { UserRoleId } from '../../enums/user-role.enum';
+import { UserRoleId } from '../../enums/role.enum';
 import { GetUserResponse } from '../../models/user/user.model';
 import { routesByRoles, routesbyAreas } from 'src/environments/environment';
 

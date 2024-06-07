@@ -1,0 +1,5 @@
+@import 'variables';
+
+.text-label {
+  @include bodyMediumText;
+}

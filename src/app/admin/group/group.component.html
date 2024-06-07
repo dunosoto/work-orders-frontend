@@ -1,0 +1,17 @@
+<app-route-section [routes]="['Workspace', 'Grupos']"></app-route-section>
+<app-title-section [title]="'Lista de Grupos'"></app-title-section>
+
+<section class="data">
+  <section class="data-container is-bg--neutral20" *ngIf="true">
+    <!-- <app-filters [buttonName]="'Nuevo Grupo'" (buttonEventEmitter)="addGroup()"
+      (searchEventEmitter)="getSearchText($event)"></app-filters> -->
+    <section *ngIf="(groupDataList$ | async  | filterGroupByPrefix:textToSearch)?.length !== 0">
+      <app-group-data [groupDataList]="groupDataList$ | async | filterGroupByPrefix:textToSearch"
+        (reloadEventEmitter)="getAllGroups()"></app-group-data>
+    </section>
+    <!-- <section *ngIf="(groupDataList$ | async  | filterGroupByPrefix:textToSearch)?.length === 0">
+      <app-empty-state></app-empty-state>
+    </section> -->
+  </section>
+
+</section>

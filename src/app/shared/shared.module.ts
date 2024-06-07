@@ -8,6 +8,10 @@ import { TitleSectionComponent } from './components/title-section/title-section.
 import { ReactiveFormsModule } from '@angular/forms';
 import { FilterComponent } from './components/filter/filter.component';
 import { FilterUserByUserNamePipe } from './pipes/user/filter-user-by-user-name.pipe';
+import { FilterGroupByPrefixPipe } from './pipes/group/filter-group-by-prefix.pipe';
+import { FilterUserByRolePipe } from './pipes/user/filter-user-by-role.pipe';
+import { FilterByFirstSelectedTrcPipe } from './pipes/group/filter-by-first-selected-trc.pipe';
+import { FilterRoleByNamePipe } from './pipes/role/filter-role-by-name.pipe';
 
 
 
@@ -17,7 +21,11 @@ import { FilterUserByUserNamePipe } from './pipes/user/filter-user-by-user-name.
     RouteSectionComponent,
     TitleSectionComponent,
     FilterComponent,
-    FilterUserByUserNamePipe
+    FilterUserByUserNamePipe,
+    FilterGroupByPrefixPipe,
+    FilterUserByRolePipe,
+    FilterByFirstSelectedTrcPipe,
+    FilterRoleByNamePipe,
   ],
   imports: [
     CommonModule,
@@ -30,7 +38,11 @@ import { FilterUserByUserNamePipe } from './pipes/user/filter-user-by-user-name.
     RouteSectionComponent,
     TitleSectionComponent,
     FilterComponent,
-    FilterUserByUserNamePipe
+    FilterUserByUserNamePipe,
+    FilterGroupByPrefixPipe,
+    FilterUserByRolePipe,
+    FilterByFirstSelectedTrcPipe,
+    FilterRoleByNamePipe,
   ]
 })
 export class SharedModule { }

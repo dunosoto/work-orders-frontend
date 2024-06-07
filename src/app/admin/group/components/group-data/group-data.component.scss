@@ -1,0 +1,30 @@
+@import 'variables';
+
+.text-label {
+  @include bodyLargeText;
+  opacity: 0.5;
+}
+
+.user-content,
+.group-content {
+  padding: 10px 0px;
+  &__avatar {
+    margin-right: 10px;
+  }
+
+  &__info {
+    &-name {
+      opacity: 1;
+    }
+  }
+}
+
+.mat-column-groups {
+  max-width: 250px;
+  @include media-breakpoint-up(md){
+    max-width: 350px;
+  }
+  @include media-breakpoint-up(lg){
+    max-width: 550px;
+  }
+}

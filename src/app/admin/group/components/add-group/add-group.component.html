@@ -1,0 +1,60 @@
+<mat-toolbar class="mat-elevation-z6 dialog-toolbar">
+  <span class="title-section">Agregar Grupo</span>
+  <span class="spacer"></span>
+  <button mat-icon-button color="primary">
+    <mat-icon aria-label="label" (click)="closeModal()">close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-label class="text-label">Los campos con * son obligatorios:</mat-label>
+
+<form class="form-container" [formGroup]="groupForm" (ngSubmit)="addGroup(swalSuccess)">
+  <section class="form-container__content is-flex is-flex-direction-column is-bg--neutral20">
+    <section class="field mb-4">
+      <mat-label class="label">Prefijo del grupo *:</mat-label>
+      <article class="control has-icons-left has-icons-right">
+        <input class="input" type="input" placeholder="Prefijo del grupo" formControlName="prefix">
+      </article>
+    </section>
+    
+    <section class="field mb-4">
+      <mat-label class="label">¿Qué usuarios están en este grupo? *:</mat-label>
+      <article>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let user of chipSelectedUsers" [selectable]="true" [removable]="true"
+            (removed)="removeUserChipList(user)">
+            <!-- <ngx-avatar size="25" class="user-avatar mr-2" [name]="user.name"></ngx-avatar> -->
+            <mat-label class="is-text is-text--button">{{user.role.prefix + ' - ' +  user.name + ' '+ user.last_name}}
+            </mat-label>
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+          <input class="input is-text is-text--body input-complete" placeholder="Seleccione Usuarios" #userInput
+            [formControl]="userControl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+            (matChipInputTokenEnd)="addUserChipList($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="userChipSelected($event)">
+          <mat-option class="is-bg--neutral30"
+            *ngFor="let userName of filteredUsers | async | filterByFirstSelectedTrc:chipSelectedUsers"
+            [value]="userName.firstName">
+            <mat-label class="is-text is-text--button is-color--white">
+              {{ userName.role.prefix + ' - '+ userName.firstName + ' '+ userName.lastName}}
+            </mat-label>
+          </mat-option>
+        </mat-autocomplete>
+        <ng-container *ngIf="chipSelectedUsers.length === allUsers?.length &&  chipSelectedUsers.length > 0">
+          <mat-label class="help">{{ 'Ya seleccionó a todos los usuarios disponibles' }}</mat-label>
+        </ng-container>
+      </article>
+
+    </section>
+    <button mat-raised-button type="submit" color="primary"
+      [disabled]="chipSelectedUsers.length < 1 && !groupForm.valid">
+      <mat-label class="btn-text">Agregar</mat-label>
+    </button>
+  </section>
+</form>
+
+<swal #swalSuccess title="¡Registrado correctamente!" text="Los datos del nuevo grupo se registraron correctamente."
+  icon="success" position="center" customClass="swalSuccess" [showCancelButton]="false" [showCancelButton]="false"
+  [showConfirmButton]="false" [timer]="1500">
+</swal>

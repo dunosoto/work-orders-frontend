@@ -1,0 +1,19 @@
+@import 'variables';
+
+.form-container {
+  &__content {
+    padding: 20px;
+  }
+}
+
+.chip-list-users {
+  width: 100%;
+}
+
+::placeholder {
+  color: var(--color-light-read-only);
+}
+
+.help {
+  font-size: 15px;
+}

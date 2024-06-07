@@ -1,4 +1,4 @@
-export enum UserRole {
+export enum RoleEnum {
   ADMINISTRATOR = 'AD',
   TECHNICAL_USER = 'TC',
   TECHNICAL_SUPERVISOR = 'TRC',
@@ -6,7 +6,7 @@ export enum UserRole {
   SUPERVISOR = 'SU',
 }
 
-export enum UserRoleId {
+export enum RoleEnumId {
   ADMINISTRATOR = 1,
   SUPERVISOR = 2,
   TECHNICAL_USER = 3,

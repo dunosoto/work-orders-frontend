@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { UserRoleId } from '../shared/enums/user-role.enum';
+import { UserRoleId } from '../shared/enums/role.enum';
 
 const routes: Routes = [
   {
@@ -17,14 +17,14 @@ const routes: Routes = [
         },
         loadChildren: () => import('./user/user.module').then(m => m.UserModule)
       },
-      // {
-      //   path: 'grupos',
-      //   canActivateChild: [PermissionGuard],
-      //   data: {
-      //     idRoles: [UserRoleId.ADMINISTRATOR]
-      //   },
-      //   loadChildren: () => import('./group/group.module').then(m => m.GroupModule)
-      // },
+      {
+        path: 'grupos',
+        // canActivateChild: [PermissionGuard],
+        data: {
+          idRoles: [UserRoleId.ADMINISTRATOR]
+        },
+        loadChildren: () => import('./group/group.module').then(m => m.GroupModule)
+      },
       // {
       //   path: 'roles',
       //   canActivateChild: [PermissionGuard],
