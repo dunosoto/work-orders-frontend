@@ -1,0 +1,34 @@
+<mat-toolbar class="mat-elevation-z6 dialog-toolbar">
+  <span class="title-section">Editar rol</span>
+  <span class="spacer"></span>
+  <button mat-icon-button color="primary">
+    <mat-icon aria-label="label" (click)="closeModal()">close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-label class="text-label">Los campos con * son obligatorios:</mat-label>
+<form class="form-container" [formGroup]="formData" (ngSubmit)="editRol()">
+  <section class="form-container__content is-flex is-flex-direction-column is-bg--neutral20">
+    <section class="field mb-4">
+      <mat-label class="label">Nombre del Rol:</mat-label>
+      <article class="control has-icons-left has-icons-right">
+        <input class="input" type="text" placeholder="Ingrese el nombre del rol" formControlName="name">
+      </article>
+
+      <section *ngFor="let errorMessage of errorsMessages.name">
+        <ng-container *ngIf="name?.hasError(errorMessage.type) && (name?.dirty || name?.touched)">
+          <mat-label class="help">
+            {{errorMessage.message}}
+          </mat-label>
+        </ng-container>
+      </section>
+
+      <!-- <article *ngIf="rolName.invalid && (rolName.dirty || rolName.touched)">
+        <mat-label *ngIf="rolName.errors.required" class="help">El nombre del rol es requerido</mat-label>
+      </article> -->
+
+    </section>
+    <button mat-raised-button type="submit" color="primary" [disabled]="!formData.valid">
+      <mat-label class="btn-text">Guardar Cambios</mat-label>
+    </button>
+  </section>
+</form>

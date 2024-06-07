@@ -1,0 +1,72 @@
+<section class="table-container">
+  <mat-table [dataSource]="groupDataList">
+
+    <ng-container matColumnDef="groups">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Grupos</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <section class="group-content is-flex logo">
+          <!-- <ngx-avatar size="40" class="group-content__avatar" src="assets/img/logo.png"></ngx-avatar> -->
+          <section class="group-content__info is-flex is-flex-direction-column is-justify-content-center ">
+            <mat-label class="text-label group-content__info-name is-color--secondary">{{element.prefix | uppercase}}
+            </mat-label>
+            <mat-label class="is-text--caption group-content__info-name is-color--secondary"
+              *ngIf="element.users | filterUserByRole:userRole.TECHNICAL_SUPERVISOR as userTrc">
+              {{  userTrc.role.prefix + ' - ' + userTrc.firstName + ' ' + userTrc.lastName  }}
+            </mat-label>
+
+          </section>
+        </section>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="areas">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Area(s)</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <section class="group-content__inf is-flex is-flex-direction-column">
+          <mat-label class="is-color--white" *ngFor="let area of element.areas">{{area.name | titlecase}}
+          </mat-label>
+        </section>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="users">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Usuarios</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <section class="user-content is-flex">
+          <!-- <ngx-avatar size="30" class="user-content__avatar" [name]="item.firstName
+            [matTooltip]="item.role.prefix + ' - '+ item.name + ' ' + item.lastName" matTooltipPosition="above"
+            matTooltipClass="mat-tooltip" *ngFor="let item of element.users"></ngx-avatar> -->
+        </section>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action" stickyEnd>
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button expand="block" slot="end" fill="clear" color="primary" [matMenuTriggerFor]="action">
+          <mat-icon aria-label="label">more_horiz</mat-icon>
+          <mat-menu #action xPosition="before">
+            <button mat-menu-item (click)="editGroup(element)">
+              <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="edit-icon">mode_edit_outline
+              </mat-icon>
+              <mat-label color="primary">Editar</mat-label>
+            </button>
+            <button mat-menu-item (click)="deleteGroup(element)">
+              <mat-icon aria-hidden="false" aria-label="tash-icon">delete_outline</mat-icon>
+              <mat-label color="primary">Eliminar</mat-label>
+            </button>
+          </mat-menu>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+  </mat-table>
+</section>

@@ -10,6 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { environment } from 'src/environments/environment';
+import { AvatarModule } from 'ngx-avatar';
 
 @NgModule({
   declarations: [
@@ -19,6 +24,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AvatarModule,
     SweetAlert2Module.forRoot({
       provideSwal: () => import('sweetalert2').then(({ default: swal }) => swal.mixin({
         cancelButtonText: 'Cancelar',
@@ -28,6 +34,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
         }
       }))
     }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
+    AngularFirestoreModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,

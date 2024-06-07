@@ -1,0 +1,32 @@
+<section class="table-container">
+  <mat-table [dataSource]="dataRols">
+
+    <ng-container matColumnDef="rols">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label class="pl-4">Roles</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-label class="text-label is-color--light-read-only has-opacity--5">{{element.name | titlecase }}</mat-label>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action" stickyEnd *ngIf="false">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button expand="block" slot="end" fill="clear" color="primary"
+        [matMenuTriggerFor]="action">
+        <mat-icon aria-label="label">more_horiz</mat-icon>
+        <mat-menu #action xPosition="before">
+          <button mat-menu-item (click)="updateRol(element)">
+            <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="edit-icon">mode_edit_outline</mat-icon>
+            <mat-label color="primary">Editar</mat-label>
+          </button>
+        </mat-menu>
+      </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+  </mat-table>
+</section>

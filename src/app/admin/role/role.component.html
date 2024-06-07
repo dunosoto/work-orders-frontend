@@ -1,0 +1,19 @@
+<app-route-section [routes]="['Workspace', 'Roles']"></app-route-section>
+<app-title-section [title]="'Lista de Roles'"></app-title-section>
+
+<section class="data">
+  <!-- *ngIf="loading$ | async" -->
+  <section class="data-container">
+    <!-- <app-filters [buttonName]="'Rol'" (searchEventEmitter)="getTextToSearch($event)"></app-filters> -->
+
+    <section *ngIf="(dataGlobalStore.roles$ | async | filterRoleByName:textToSearch).length > 0">
+      <app-role-data [dataRols]="dataGlobalStore.roles$ | async | filterRoleByName:textToSearch"
+        (reloadEventEmitter)="getAllRoles()">
+      </app-role-data>
+    </section>
+
+    <!-- <app-empty-state *ngIf="(dataGlobalStore.roles$ | async | filterRoleByName:textToSearch).length === 0">
+    </app-empty-state> -->
+
+  </section>
+</section>
