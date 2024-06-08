@@ -1,0 +1,81 @@
+<section class="table-container" *ngIf="clientData">
+  <mat-table [dataSource]="clientData.addresses">
+
+    <ng-container matColumnDef="department">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Departamento</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index;" (click)="selectedAddressByUser(element, i)">
+        <section class="group-content">
+          <section class="group-content__info">
+            <mat-label class="text-label group-content__info-name"
+              [ngClass]="{'is-color--neutral10': i === indexSelected}">
+              {{ element.city }}
+            </mat-label>
+          </section>
+        </section>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="province">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Provincia</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index;" (click)="selectedAddressByUser(element, i)">
+        <section class="group-content">
+          <section class="group-content__info">
+            <mat-label class="text-label group-content__info-name"
+              [ngClass]="{'is-color--neutral10': i === indexSelected}">
+              {{element.location}}
+            </mat-label>
+          </section>
+        </section>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="location">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Ubicación</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index;" (click)="selectedAddressByUser(element, i)">
+        <section class="group-content">
+          <section class="group-content__info">
+            <mat-label class="text-label group-content__info-name"
+              [ngClass]="{'is-color--neutral10': i === indexSelected}">
+              {{element.direction}}
+            </mat-label>
+          </section>
+        </section>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action" stickyEnd>
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index" [ngClass]="{'is-bg--primary90': i === indexSelected}">
+        <button mat-icon-button expand="block" slot="end" fill="clear" color="primary" [matMenuTriggerFor]="action">
+          <mat-icon aria-label="label">more_horiz</mat-icon>
+          <mat-menu #action xPosition="before">
+            <button mat-menu-item (click)="updateAddressToClient(element)">
+              <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="edit-icon">mode_edit_outline
+              </mat-icon>
+              <mat-label color="primary">Editar</mat-label>
+            </button>
+            <button mat-menu-item>
+              <mat-icon aria-hidden="false" aria-label="tash-icon">delete_outline</mat-icon>
+              <mat-label color="primary">Eliminar</mat-label>
+            </button>
+          </mat-menu>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row class="has-cursor--pointer" *matRowDef="let row; columns: columns;let i = index"
+      [ngClass]="{'is-bg--primary90': i === indexSelected}">
+    </mat-row>
+  </mat-table>
+
+  <!-- <section *ngIf="clientData.addresses && clientData.addresses.length === 0">
+    <cotel-empty-state></cotel-empty-state>
+  </section> -->
+</section>

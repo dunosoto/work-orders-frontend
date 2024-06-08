@@ -1,0 +1,13 @@
+<google-map #myGoogleMap height="100%" width="100%" [zoom]="initialValuesToConfigGoogleMap.zoom" [center]="center"
+  [options]="initialValuesToConfigGoogleMap.options" (mapClick)="dropMarker($event)">
+  <section>
+    <article>
+      <input #mapSearchField class="map-search" type="text" placeholder="Ingrese el lugar a buscar">
+    </article>
+    <map-marker #markerElem="mapMarker" [position]="marker.position" [label]="marker.label" [title]="marker.title"
+      [options]="markerOptions">
+    </map-marker>
+
+    <map-info-window>{{ infoContent }}</map-info-window>
+  </section>
+</google-map>

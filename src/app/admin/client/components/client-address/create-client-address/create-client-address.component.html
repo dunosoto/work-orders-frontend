@@ -1,0 +1,73 @@
+<app-route-section [showCloseButton]="true" [routes]="routes" (closeButtonEmitter)="closeModal()">
+</app-route-section>
+<form class="form-container" *ngIf="data" [formGroup]="formData" (ngSubmit)="addDirectionToClient()">
+  <section class="p-4">
+    <mat-label class="is-text is-text--caption is-color--secondary">Los campos con * son obligatorios:</mat-label>
+  </section>
+
+  <section class="has-text-centered is-bg--neutral20 " *ngIf="data">
+    <article class="is-text is-text--title is-color--white my-3 py-3">Cliente:
+      <mat-label class="is-color--primary is-text--title">
+        {{ (data.name | uppercase) + ' ' +  (data.lastName | uppercase )}} </mat-label>
+    </article>
+
+    <section class="columns is-multiline is-full--h m-0 pb-6">
+      <section
+        class="column is-12-mobile is-4-tablet is-4-desktop is-flex is-justify-content-center is-bg--neutral20 px-0 py-0 pl-3">
+        <section class=" is-bg--neutral30 has-border-radius--8 px-4 is-full--h is-full--w">
+          <section class="field">
+            <article class="my-6 is-text--label is-color--secondary" *ngIf="false">Ubicación:
+              <mat-label class=" is-color--white is-text--body--secondary">
+                {{ setDataAddresToForm?setDataAddresToForm.city:'....' }}
+              </mat-label>
+            </article>
+
+            <article class="my-6 is-text--label is-color--secondary">Latitud:
+              <mat-label class=" is-color--white is-text--body--secondary">
+                {{ setDataAddresToForm?setDataAddresToForm.lat:'....' }}
+              </mat-label>
+            </article>
+            <article class="my-6 is-text--label is-color--secondary">Longitud:
+              <mat-label class="is-color--white is-text--body--secondary">
+                {{ setDataAddresToForm?setDataAddresToForm.lon:'....' }}
+              </mat-label>
+            </article>
+            <article class="my-6 is-text--label  is-color--secondary">Dirección:
+              <mat-label class="is-color--white is-text--body--secondary">
+                {{ setDataAddresToForm?setDataAddresToForm.direction:'....' }}
+              </mat-label>
+            </article>
+          </section>
+
+          <section class="field">
+            <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+              <mat-label class="label">Descripción*:</mat-label>
+            </section>
+            <textarea class="textarea" type="text" formControlName="description"
+              placeholder="Ingrese una descripcion para dirección"></textarea>
+            <section *ngFor="let errorMessage of errorsMessages.description">
+              <ng-container
+                *ngIf="description?.hasError(errorMessage.type) && (description?.dirty || description?.touched)">
+                <mat-label class="help">
+                  {{errorMessage.message}}
+                </mat-label>
+              </ng-container>
+            </section>
+          </section>
+
+          <section class="is-full--w has-text-right my-3">
+            <button mat-raised-button type="submit" class="is-full--w" color="primary" [disabled]="!formData.valid">
+              <mat-label class="is-text is-text--button is-color--white">Registrar dirección</mat-label>
+            </button>
+          </section>
+        </section>
+      </section>
+
+      <section class="column is-12-mobile is-8-tablet is-8-desktop m-0 py-0">
+        <section class="is-bg--neutral30 has-border-radius--8 p-4 is-full--h">
+          <app-google-maps (sendAddressSelectedEventEmitter)="getAddressSelected($event)"></app-google-maps>
+        </section>
+      </section>
+    </section>
+  </section>
+</form>

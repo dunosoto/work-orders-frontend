@@ -1,0 +1,63 @@
+<section class="table-container" *ngIf="clientsData">
+  <mat-table [dataSource]="clientsData">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Nombre</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" [routerLink]="['address',element.id]">
+        <mat-label class="text-label is-color--white">{{element.name}}</mat-label>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="last-name">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Apellido</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" [routerLink]="['address',element.id]">
+        <mat-label class="text-label is-color--white">{{element.last_name}}</mat-label>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Categoría</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" [routerLink]="['address',element.id]">
+        <mat-label class="text-label is-color--white">{{element.category.name}}</mat-label>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="telephone">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-label>Telf</mat-label>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" [routerLink]="['address',element.id]">
+        <mat-label class="text-label is-color--white">{{element.phones[0].telephone}}</mat-label>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action" stickyEnd>
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button expand="block" slot="end" fill="clear" color="primary" [matMenuTriggerFor]="action">
+          <mat-icon aria-label="label">more_horiz</mat-icon>
+          <mat-menu #action xPosition="before">
+            <button mat-menu-item (click)="updateClientData(element)">
+              <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="edit-icon">mode_edit_outline
+              </mat-icon>
+              <mat-label color="primary">Editar</mat-label>
+            </button>
+            <button mat-menu-item (click)="deleteClient(element)">
+              <mat-icon aria-hidden="false" aria-label="tash-icon">delete_outline</mat-icon>
+              <mat-label color="primary">Eliminar</mat-label>
+            </button>
+          </mat-menu>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+    <mat-row class="has-cursor--pointer" *matRowDef="let row; columns: columns;"></mat-row>
+  </mat-table>
+</section>

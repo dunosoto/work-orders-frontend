@@ -1,0 +1,7 @@
+@import 'variables';
+
+.text-label {
+  @include bodyLargeText;
+  // color: var(--color-light-read-only);
+  // opacity: 0.5;
+}

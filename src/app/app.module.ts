@@ -15,6 +15,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from 'src/environments/environment';
 import { AvatarModule } from 'ngx-avatar';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AvatarModule } from 'ngx-avatar';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFirestoreModule,
+    GoogleMapsModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,

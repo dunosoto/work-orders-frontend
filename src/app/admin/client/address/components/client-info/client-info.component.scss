@@ -1,0 +1,15 @@
+.client-data {
+  margin: 0px !important;
+
+  &__detail {
+    border: 1px solid #A08C8775;
+    height: 67px;
+    overflow: hidden;
+
+    .is-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

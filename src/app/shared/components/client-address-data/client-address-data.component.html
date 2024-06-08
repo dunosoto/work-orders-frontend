@@ -1,0 +1,12 @@
+<article matRipple *ngIf="address" class="item p-2 is-flex is-justify-content-space-between is-align-items-center has-cursor--pointer"
+  [ngClass]="{'is-bg--neutral40 ': index === indexAddressSelected}" (click)="selectAddressEventEmitter.emit(address)">
+  <section class="is-flex is-flex-direction-column">
+    <mat-label class="is-text is-text--button is-color--white" [matTooltip]="address.description | titlecase"
+      matTooltipPosition="above" matTooltipClass="mat-tooltip">
+      {{address.direction | titlecase}}
+    </mat-label>
+  </section>
+  <mat-icon *ngIf="index === indexAddressSelected" class="is-color--primary" aria-hidden="false"
+    aria-label="navigate_next icon">navigate_next</mat-icon>
+</article>
+w

@@ -1,0 +1,86 @@
+<app-route-section [showCloseButton]="true" [routes]="routes" (closeButtonEmitter)="closeModal()">
+</app-route-section>
+
+<form class="form-container" [formGroup]="formData" (ngSubmit)="updateClientData()">
+  <section class="p-4">
+    <mat-label class="is-text is-text--caption is-color--secondary">Los campos con * son obligatorios:</mat-label>
+  </section>
+  <section class="p-4 is-bg--neutral20">
+
+    <section class="is-bg--neutral0 p-4 has-border-radius--8 is-flex is-flex-direction-column">
+      <section class="field">
+        <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+          <mat-label class="label">ci*:</mat-label>
+        </section>
+        <section class="control has-icons-left has-icons-right">
+          <input class="input" type="text" required="true" placeholder="Código" formControlName="code">
+        </section>
+        <section *ngFor="let errorMessage of errorsMessages.identityCard">
+          <ng-container *ngIf="identityCard?.hasError(errorMessage.type) && (identityCard?.dirty || identityCard?.touched)">
+            <mat-label class="help">
+              {{errorMessage.message}}
+            </mat-label>
+          </ng-container>
+        </section>
+      </section>
+
+
+      <section class="field">
+        <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+          <mat-label class="label">Nombre(s)*:</mat-label>
+        </section>
+        <section class="control has-icons-left has-icons-right">
+          <input class="input" type="text" required="true" placeholder="Nombre" formControlName="name"
+            [value]="formData.controls.firstName.value | titlecase">
+        </section>
+        <section *ngFor="let errorMessage of errorsMessages.firstName">
+          <ng-container *ngIf="firstName?.hasError(errorMessage.type) && (firstName?.dirty || firstName?.touched)">
+            <mat-label class="help">
+              {{errorMessage.message}}
+            </mat-label>
+          </ng-container>
+        </section>
+      </section>
+
+      <section class="field">
+        <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+          <mat-label class="label">Apellidos*:</mat-label>
+        </section>
+        <section class="control has-icons-left has-icons-right">
+          <input class="input" type="text" required="true" placeholder="Ingrese apellidos" formControlName="last_name"
+            [value]="formData.controls.lastName.value | titlecase">
+        </section>
+        <section *ngFor="let errorMessage of errorsMessages.lastName">
+          <ng-container *ngIf="lastName?.hasError(errorMessage.type) && (lastName?.dirty || lastName?.touched)">
+            <mat-label class="help">
+              {{errorMessage.message}}
+            </mat-label>
+          </ng-container>
+        </section>
+      </section>
+
+      <section class="field">
+        <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+          <mat-label class="label">Número de referencia*:</mat-label>
+        </section>
+        <section class="control has-icons-left has-icons-right">
+          <input class="input" type="text" required="true" placeholder="Número de teléfono o celular"
+            formControlName="phone">
+        </section>
+        <section *ngFor="let errorMessage of errorsMessages.phone">
+          <ng-container
+            *ngIf="phone?.hasError(errorMessage.type) && (phone?.dirty || phone?.touched)">
+            <mat-label class="help">
+              {{errorMessage.message}}
+            </mat-label>
+          </ng-container>
+        </section>
+      </section>
+
+      <button class="mt-3 btn-submit has-e" mat-raised-button type="submit" color="primary"
+        [disabled]="!formData.valid">
+        <mat-label class="btn-text">Guardar cambios</mat-label>
+      </button>
+    </section>
+  </section>
+</form>

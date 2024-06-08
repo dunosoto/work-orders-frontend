@@ -1,0 +1,69 @@
+<app-route-section [routes]="['Workspace', 'Clientes']" [showBackButton]="true"
+  (backButtonEmitter)="goToListClients()"></app-route-section>
+
+<section class="columns is-multiline mx-0 mt-3 pb-5">
+
+  <mat-progress-bar *ngIf="loading$ | async" mode="query"></mat-progress-bar>
+
+  <section class="column is-12" *ngIf="clientData$">
+    <app-client-info [clientData]="clientData$ | async"></app-client-info>
+
+    <mat-divider class="mt-5 is-color--dark-outline"></mat-divider>
+  </section>
+
+
+  <section class="column is-8" *ngIf="clientData$">
+    <section class="is-bg--neutral20 p-2 m-0 has-border-radius--8">
+      <app-filter [showInputSearch]="false" [buttonName]="'Nueva Dirección'" [title]="'Direcciones'"
+        (buttonEventEmitter)="addNewAddressToClient()"></app-filter>
+
+      <app-address-data [clientData]="clientData$ | async"
+        (selectedAddressByUserEmitter)="getSelectedAddressByUser($event)">
+      </app-address-data>
+    </section>
+
+    <mat-divider class="my-5"></mat-divider>
+
+    <section *ngIf="((clientData$ | async)?.addresses)?.length !== 0">
+      <google-map #myGoogleMap height="348px" width="100%" [zoom]="initialValuesToConfigGoogleMap.zoom"
+        [center]="center" [options]="initialValuesToConfigGoogleMap.options">
+        <section>
+          <map-marker *ngFor="let marker of markers" #markerElem="mapMarker" [position]="marker.position"
+            [label]="marker.label" [title]="marker.title" [options]="markerOptions">
+          </map-marker>
+        </section>
+      </google-map>
+    </section>
+
+  </section>
+
+  <mat-divider vertical class="m-2 has-border"></mat-divider>
+
+  <section class="column">
+    <section class="data-services p-5 is-4 is-bg--neutral20 has-border-radius--8">
+      <mat-label class="is-text is-text--title text-label is-color--white" *ngIf="!selectedAdressByUser">Servicios
+      </mat-label>
+      <app-filter [buttonName]="'Agregar'" [showInputSearch]="false" [title]="'Servicios'"
+        (buttonEventEmitter)="addNewServiceToAddress()" *ngIf="selectedAdressByUser"></app-filter>
+      <!-- <section *ngIf="selectedAdressByUser" class=" has-overflox-auto--y card-service-container">
+        <article class="column my-3 is-12 is-bg--neutral30 has-border-radius--8"
+          *ngFor="let clientService of clientServicesData$ | async | filterInternetServiceByAddressId:selectedAdressByUser.id; trackBy:workOrderGroupTrackBy">
+          <app-address-service [clientService]="clientService"
+            (updteClienServiceEventEmitter)="getUpdateServiceEventEmitter($event)"></app-address-service>
+        </article>
+      </section> -->
+
+      <!-- <section *ngIf="!selectedAdressByUser">
+        <app-empty-state [showBtn]="false" [title]="''"
+          [text]="'Selecciona una dirección para ver los servicios disponibles'"
+          [image]="'assets/icon/empty-state/box.svg'" [isIcon]="true">
+        </app-empty-state>
+      </section> -->
+
+      <!-- <app-empty-state
+        *ngIf="selectedAdressByUser && (clientServicesData$ | async | filterInternetServiceByAddressId:selectedAdressByUser.id).length === 0">
+      </app-empty-state> -->
+    </section>
+
+  </section>
+</section>
