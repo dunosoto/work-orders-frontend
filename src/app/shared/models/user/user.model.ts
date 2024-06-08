@@ -1,8 +1,7 @@
 import { BaseModel } from "../base.model";
 import { Role } from "../role/role.model";
 
-export interface GetUserResponse {
-  id: number;
+export interface GetUserResponse extends BaseModel{
   firstName: string;
   lastName: string;
   cellPhone: string;
