@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RoutesByArea, RoutesByRole } from '../../models/routes-by-role.model';
 import { Router } from '@angular/router';
-import { UserRoleId } from '../../enums/role.enum';
 import { GetUserResponse } from '../../models/user/user.model';
 import { routesByRoles, routesbyAreas } from 'src/environments/environment';
+import { RoleEnumId } from '../../enums/role.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class RouteService {
   private routesByRole: RoutesByRole[] = routesByRoles;
   private routesByArea: RoutesByArea[] = routesbyAreas;
   private firstIndexToArea: number = 0;
-  public userRoleId = UserRoleId;
+  public userRoleId = RoleEnumId;
   
   constructor(
     private router: Router
