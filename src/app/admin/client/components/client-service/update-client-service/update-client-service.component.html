@@ -1,0 +1,197 @@
+<app-route-section [showCloseButton]="true" [routes]="routes" (closeButtonEmitter)="closeModal()">
+</app-route-section>
+<form class="form-container" [formGroup]="formData" (ngSubmit)="updateService()">
+  <section class="p-4">
+    <mat-label class="is-text is-text--caption is-color--secondary">Los campos con * son obligatorios:</mat-label>
+  </section>
+  <section class="columns is-multiline m-0 is-flex is-justify-content-space-between p-4 is-bg--neutral20">
+
+    <section class="column is-12-mobile is-12-tablet is-12-desktop px-3">
+      <section class="is-bg--neutral30 p-5 is-full--h">
+
+        <section class="field">
+          <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+            <mat-label class="label">Tipo de Servicio*:</mat-label>
+          </section>
+          <section>
+            <mat-select class="" placeholder="Seleccione el tipo de servicio" required="true"
+              formControlName="type_name">
+              <mat-option class="is-bg--neutral30" *ngFor="let serviceType of internetServicesTypes$ | async"
+                [value]="serviceType.name" (click)="formData.controls.type_id.setValue(serviceType.id)">
+                <mat-label class="is-text is-text--button is-color--white">{{serviceType.name | titlecase }}</mat-label>
+              </mat-option>
+            </mat-select>
+          </section>
+
+          <section *ngFor="let errorMessage of errorsMessages.type_name">
+            <ng-container *ngIf="type_name?.hasError(errorMessage.type) && (type_name?.dirty || type_name?.touched)">
+              <mat-label class="help">
+                {{errorMessage.message}}
+              </mat-label>
+            </ng-container>
+          </section>
+        </section>
+
+
+        <section class="field">
+          <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+            <mat-label class="label">Tipo de Acceso*:</mat-label>
+          </section>
+          <section>
+            <mat-select class="" placeholder="Tipo de acceso" required="true" formControlName="access_name">
+              <mat-option class="is-bg--neutral30" *ngFor="let serviceAccess of internetServicesAccess$ | async"
+                [value]="serviceAccess.name" (click)="saveAccessTypeSelected(serviceAccess)">
+                <mat-label class="is-text is-text--button is-color--white">{{serviceAccess.name | titlecase }}
+                </mat-label>
+              </mat-option>
+            </mat-select>
+          </section>
+
+          <section *ngFor="let errorMessage of errorsMessages.access_name">
+            <ng-container
+              *ngIf="access_name?.hasError(errorMessage.type) && (access_name?.dirty || access_name?.touched)">
+              <mat-label class="help">
+                {{errorMessage.message}}
+              </mat-label>
+            </ng-container>
+          </section>
+        </section>
+
+        <section class="field" *ngIf="false">
+          <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+            <mat-label class="label">Tipo conexiones*:</mat-label>
+          </section>
+          <section>
+            <mat-select placeholder="Tipo de conexiones" required="true" formControlName="connections_selected"
+              multiple>
+              <mat-option class="is-bg--neutral30" *ngFor="let conection of internetServicesConections$ | async"
+                [value]="conection">
+                <mat-label class="is-text is-text--button is-color--white">{{conection.prefix + ' ' + conection.name}}
+                </mat-label>
+              </mat-option>
+            </mat-select>
+          </section>
+        </section>
+      </section>
+
+    </section>
+
+    <section class="column is-12-mobile is-6-tablet is-6-desktop" *ngIf="false">
+
+      <section class="column is-bg--neutral30 p-5 is-full--h" *ngIf="formData.controls.technical_datas"
+        formGroupName="technical_datas">
+
+        <section *ngIf="accessTypeSelected && accessTypeSelected.id === 1" class="columns is-multiline p-3">
+          <section class="field column is-12-mobile is-12-tablet is-6-desktop my-1 p-0">
+            <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+              <mat-label class="label">Caja*:</mat-label>
+            </section>
+            <section class="control has-icons-left has-icons-right">
+              <input class="input" type="text" required="true" placeholder="Caja" formControlName="box">
+            </section>
+          </section>
+
+          <section class="field column is-12-mobile is-12-tablet is-6-desktop my-1 p-0 pl-2">
+            <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+              <mat-label class="label">Enlace par*:</mat-label>
+            </section>
+            <section class="control has-icons-left has-icons-right">
+              <input class="input" type="text" required="true" placeholder="Enlace par" formControlName="pair">
+            </section>
+          </section>
+
+          <section class="field column is-12-mobile is-12-tablet is-12-desktop my-1 p-0">
+            <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+              <mat-label class="label">Nodo par OLT*:</mat-label>
+            </section>
+            <section class="control has-icons-left has-icons-right">
+              <input class="input" type="text" required="true" placeholder="Nodo par OLT" formControlName="node">
+            </section>
+          </section>
+
+          <section class="field column is-12-mobile is-12-tablet is-12-desktop my-1 p-0">
+            <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+              <mat-label class="label">Bajada*:</mat-label>
+            </section>
+            <section class="control has-icons-left has-icons-right">
+              <input class="input" type="text" required="true" placeholder="Información de bajada"
+                formControlName="descent">
+            </section>
+          </section>
+
+          <section class="field column is-12-mobile is-12-tablet is-12-desktop my-1 p-0">
+            <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+              <mat-label class="label">Primario*:</mat-label>
+            </section>
+            <section class="control has-icons-left has-icons-right">
+              <input class="input" type="text" required="true" placeholder="Primario" formControlName="primary">
+            </section>
+          </section>
+
+        </section>
+
+        <section *ngIf="accessTypeSelected && accessTypeSelected.id === 2">
+          <section>
+
+            <section class="field">
+              <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+                <mat-label class="label">OLT*:</mat-label>
+              </section>
+              <section class="control has-icons-left has-icons-right">
+                <mat-select *ngIf="!registerOltManuallyUser" class="" placeholder="Seleccione la olt" required="true"
+                  formControlName="olt">
+
+                  <mat-option class="is-bg--neutral30" (onSelectionChange)="registerOltManually()">
+                    <mat-label class="is-text is-text--button is-color--primary">Otro</mat-label>
+                  </mat-option>
+                </mat-select>
+                <input *ngIf="registerOltManuallyUser" class="input" type="text" required="olt"
+                  placeholder="Ingrese el nombre de la OLT" formControlName="olt">
+              </section>
+            </section>
+
+
+            <section class="field">
+              <section class="mb-2 is-flex is-align-items-center is-justify-content-space-between">
+                <mat-label class="label">Puerto*:</mat-label>
+              </section>
+              <section class="control has-icons-left has-icons-right">
+                <input class="input" type="text" required="true" placeholder="Datos del puerto" formControlName="port">
+              </section>
+            </section>
+          </section>
+        </section>
+
+        <!-- <article *ngIf="!accessTypeSelected">
+          <cotel-empty-state [showBtn]="false" [title]="''"
+            [text]="'Seleccione el tipo de acceso para habilitar los campos restantes'"
+            [image]="'assets/icon/empty-state/box.svg'" [isIcon]="true">
+          </cotel-empty-state>
+        </article> -->
+      </section>
+    </section>
+
+    <section class="field column is-12">
+      <article *ngIf="false">
+        <mat-label class="label">Observación:</mat-label>
+        <textarea class="textarea description-textarea" type="text" required="true"
+          placeholder="Observación del servicio" formControlName="observation"></textarea>
+
+        <article *ngFor="let errorMessage of errorsMessages.observation">
+          <ng-container
+            *ngIf="observation?.hasError(errorMessage.type) && (observation?.dirty || observation?.touched)">
+            <mat-label class="help">
+              {{errorMessage.message}}
+            </mat-label>
+          </ng-container>
+        </article>
+      </article>
+
+      <section class="has-full--w has-text-right mt-3">
+        <button mat-raised-button type="submit" color="primary" class="has-full--w" style="width: 100%;">
+          <mat-label class="is-text is-text--button is-color--white">Guardar cambios</mat-label>
+        </button>
+      </section>
+    </section>
+  </section>
+</form>

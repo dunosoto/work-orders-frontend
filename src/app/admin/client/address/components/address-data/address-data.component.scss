@@ -1,0 +1,6 @@
+@import 'variables';
+
+.text-label {
+  @include bodyMediumText;
+  color: var(--color-light-read-only);
+}

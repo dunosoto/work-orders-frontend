@@ -1,0 +1,36 @@
+<mat-toolbar *ngIf="clientService">
+  <span class="title-section">{{clientService.type.name}}</span>
+  <article class="is-flex">
+    <mat-icon class="mat-icon-outline has-cursor--pointer" color="primary" (click)="updateService(clientService)">edit
+    </mat-icon>
+    <mat-label class="status-text">Activo</mat-label>
+  </article>
+</mat-toolbar>
+
+<section class="container-content" *ngIf="clientService">
+  <mat-list role="list" class="container-content__list">
+
+    <mat-list-item class="container-content__list-item">
+      <mat-icon class="container-content__list-item__icon">fiber_manual_record</mat-icon>
+      <mat-label class="container-content__list-item__label">{{'Instancia: ' + clientService.instance}} </mat-label>
+    </mat-list-item>
+
+    <mat-list-item class="container-content__list-item">
+      <mat-icon class="container-content__list-item__icon">fiber_manual_record</mat-icon>
+      <mat-label class="container-content__list-item__label">{{clientService.access.name | titlecase}} </mat-label>
+    </mat-list-item>
+
+    <mat-list-item class="container-content__list-item">
+      <mat-icon class="container-content__list-item__icon">fiber_manual_record</mat-icon>
+      <mat-label class="container-content__list-item__label">Datos Técnicos</mat-label>
+    </mat-list-item>
+
+    <mat-list class="ml-4 pt-0">
+      <!-- <mat-list-item class="container-content__list-item"
+        *ngFor="let item of clientService | internetServiceAccessInformation:clientService.ftt_acesses.length > 0?serviceAccessType.FTT_ACCESS:serviceAccessType.WIRED_ACCESS">
+        <mat-icon class="container-content__list-item__icon nested">fiber_manual_record</mat-icon>
+        <mat-label class="container-content__list-item__label">{{item.key + ': ' + item.value}}</mat-label>
+      </mat-list-item> -->
+    </mat-list>
+  </mat-list>
+</section>

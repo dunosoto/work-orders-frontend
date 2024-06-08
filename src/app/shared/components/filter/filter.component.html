@@ -1,1 +1,106 @@
-<p>filter works!</p>
+<mat-toolbar class="mx-0 px-0">
+  <section class="columns filter-container m-0 is-multiline py-3">
+    <div class="column field search-container is-12-mobile is-12-tablet is-6-desktop pl-0 m-0">
+
+      <mat-label *ngIf="title" class="is-color--secondary">{{ title }}</mat-label>
+      <div class="control has-icons-left" *ngIf="showInputSearch">
+        <span class="icon is-left icon-input">
+          <mat-icon>search</mat-icon>
+        </span>
+        <input class="input pl-6" type="text" [placeholder]="placeholder" [(ngModel)]="text"
+          (ngModelChange)="searchEvent()">
+      </div>
+    </div>
+
+    <section class="column is-12-mobile is-6-desktop filter-container__categories pr-0 mx-0 ">
+
+      <section *ngIf="showButonExportReport">
+        <button mat-stroked-button class="export-button" (click)="generateReportToWorkOrdersEventEmitter.emit(true)">
+          <mat-icon class="is-color--primary-c">file_download</mat-icon>
+          <mat-label class="is-text--caption">Exportar Reporte</mat-label>
+        </button>
+      </section>
+
+      <section *ngIf="filtersObject&& filtersObject.length > 0" class="field is-flex">
+        <section class="filters-data-container is-flex is-align-items-center mx-2"
+          *ngFor="let filterObject of filtersObject">
+          <mat-select class="item-category-select control is-color--secondary has-border-radius--4 p-0 is-text--caption"
+            [placeholder]="filterObject.placeholder?filterObject.placeholder:''" required="true"
+            style="background: transparent; min-width: 70px; max-width: 80px; padding:0!important">
+
+            <mat-option class="is-bg--neutral30 is-color--primary" [value]="null"
+              (click)="selectedFilterByOltList.emit({option: filterObject.options[0],value:'TODOS'})">
+              <mat-label class="is-text is-text--caption is-color--secondary">
+                {{ 'Todos' }}
+              </mat-label>
+            </mat-option>
+
+            <mat-option class="is-bg--neutral30" *ngFor="let option of filterObject.options" [value]="option"
+              (click)="selectedFilterByOltList.emit({option: option})">
+              <mat-label class="is-text is-text--caption is-color--white">
+                {{ option.name }}
+              </mat-label>
+            </mat-option>
+          </mat-select>
+
+          <mat-icon class="material-icons-outlined" aria-hidden="false" aria-label="edit-icon">
+            {{filterObject.iconName}}</mat-icon>
+        </section>
+
+      </section>
+
+
+      <section class="select wrapper mr-2 field" *ngIf="buttonName && buttonName === 'Agregar NAP'">
+        <article class="file-upload">
+          <mat-label class="label m-0 mr-1">Importar KML</mat-label>
+          <input type="file" accept=".kml" (change)="importKmlFileEventEmmiter.emit($event)" />
+          <mat-icon class="material-icons-outlined">file_download</mat-icon>
+        </article>
+      </section>
+
+      <section class="select wrapper mr-2 field"
+        *ngIf="buttonName && (buttonName === 'Agregar NAP' || buttonName === 'Agregar Poste')">
+        <article class="is-flex is-align-items-center has-cursor--pointer" *ngIf="showMap"
+          (click)="showMapSelected(false)">
+          <mat-label class="label m-0 mr-1">Vista en tabla</mat-label>
+          <mat-icon class="material-icons-outlined">toc</mat-icon>
+        </article>
+
+        <article class="is-flex is-align-items-center has-cursor--pointer" *ngIf="!showMap"
+          (click)="showMapSelected(true)">
+          <mat-label class="label m-0 mr-1">Vista en mapa</mat-label>
+          <mat-icon class="material-icons-outlined">map</mat-icon>
+        </article>
+
+      </section>
+
+      <button *ngIf="showIconChange" mat-icon-button (click)="changeViewEvent()">
+        <mat-icon aria-label="label">{{changeIcon? firstIcon : secondIcon}}</mat-icon>
+      </button>
+
+      <button class="mr-3" *ngIf="secondButtonName && secondButtonName !== 'Rol'" mat-button
+        (click)="secondButtonEventEmitter.emit(true)">
+        <mat-label class="is-text is-text--button is-color--primary">{{ secondButtonName }}</mat-label>
+      </button>
+
+      <button color="primary" *ngIf="buttonName && buttonName !== 'Rol'" mat-raised-button
+        (click)="buttonEventEmitter.emit(true)">
+        <mat-label class="is-text is-text--button is-color--white">{{ buttonName }}</mat-label>
+      </button>
+
+      <button mat-button #menuTrigger1="matMenuTrigger" (mouseover)="openMyMenu(menuTrigger1)"
+        [matMenuTriggerFor]="action" class="is-bg--primary60" *ngIf="buttonTriggerName">
+        <label class="is-text is-text--button is-color--white mr-1">{{buttonTriggerName}}</label>
+        <mat-icon aria-label="label" class="material-icons-outlined is-color--white">keyboard_arrow_down</mat-icon>
+
+        <mat-menu #action xPosition="before">
+          <span (mouseleave)="menuTrigger1.closeMenu()">
+
+          </span>
+
+        </mat-menu>
+      </button>
+    </section>
+  </section>
+
+</mat-toolbar>

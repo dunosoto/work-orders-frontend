@@ -1,0 +1,17 @@
+<app-route-section [routes]="['Workspace', 'Clientes']"></app-route-section>
+<app-title-section [title]="'Lista de Clientes'"></app-title-section>
+
+
+<section class="data">
+  <section class="data-container">
+    <mat-progress-bar *ngIf="loading$ | async" mode="query"></mat-progress-bar>
+    <app-filter [buttonName]="'Nuevo Cliente'" (buttonEventEmitter)="addNewClient()"
+      (searchEventEmitter)="getTextToSearch($event)"></app-filter>
+    <app-client-data
+      *ngIf="clientsData$ && (clientsData$ | async | filterClientByName: textToSearch)?.length !== 0"
+      [clientsData]="clientsData$ | async | filterClientByName: textToSearch" (reloadEventEmitter)="getAllCLients()">
+    </app-client-data>
+    <!-- <app-empty-state *ngIf="clientsData$ && (clientsData$| async | filterClientByName: textToSearch)?.length === 0">
+    </app-empty-state> -->
+  </section>
+</section>

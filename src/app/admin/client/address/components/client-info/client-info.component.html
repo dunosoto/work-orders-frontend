@@ -1,0 +1,59 @@
+<section class="client-data columns is-multiline" *ngIf="clientData">
+
+  <section class="column is-8 has-border-radius--8 is-bg--neutral20">
+    <section class="columns is-multiline m-0 p-0">
+
+      <article class="px-3 py-3 column is-12-mobile is-12-tablet is-12-desktop">
+        <article class="client-data__detail p-3 has-border-radius--8 has-opacity--8">
+          <section class="mb-1">
+            <mat-label class="is-text is-text--caption is-color--secondary">Nombre:</mat-label>
+          </section>
+          <mat-label class="is-text is-text--body is-color--white">{{clientData.name}}
+          </mat-label>
+        </article>
+      </article>
+
+      <article class="px-3 py-3 column is-12-mobile is-12-tablet is-12-desktop">
+        <article class="client-data__detail p-3 has-border-radius--8 has-opacity--8">
+          <section class="mb-1">
+            <mat-label class="is-text is-text--caption is-color--secondary">Apellidos:</mat-label>
+          </section>
+          <mat-label class="is-text is-text--body is-color--white">
+            {{clientData.lastName}}
+          </mat-label>
+        </article>
+      </article>
+
+
+      <article class="px-3 py-3 column is-12-mobile is-6-tablet is-6-desktop">
+        <article class="client-data__detail p-3 has-border-radius--8 has-opacity--8">
+          <section class="mb-1">
+            <mat-label class="is-text is-text--caption is-color--secondary">Primer número de referencia:</mat-label>
+          </section>
+          <mat-label class="is-text is-text--body is-color--white">
+            {{clientData.phone}}
+          </mat-label>
+        </article>
+      </article>
+
+      <article class="px-3 py-3 column is-12-mobile is-6-tablet is-6-desktop">
+        <article class="client-data__detail p-3 has-border-radius--8 has-opacity--8">
+          <section class="mb-1">
+            <mat-label class="is-text is-text--caption is-color--secondary">Segundo número de referencia:</mat-label>
+          </section>
+          <mat-label class="is-text is-text--body is-color--white">
+            {{clientData.identityCard}}
+          </mat-label>
+        </article>
+      </article>
+    </section>
+
+  </section>
+
+  <section class="column is-4 py-0 pr-0 has-border-radius--8">
+    <figure class="is-full--h is-full--w p-0 pl-3 has-border-radius--8">
+      <img class="is-full--h is-full--w has-border-radius--8" src="assets/img/client-list.png"
+        alt="">
+    </figure>
+  </section>
+</section>
